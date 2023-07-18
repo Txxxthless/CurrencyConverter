@@ -6,13 +6,15 @@ import { map } from 'rxjs';
   providedIn: 'root',
 })
 export class CurrencyService {
+  baseUrl = 'https://open.er-api.com/v6/latest/';
+
   constructor(private http: HttpClient) {}
 
-  getExchangeRates(from: string, to: string) {
-    return this.http.get<any>(`https://open.er-api.com/v6/latest/${from}`).pipe(
+  getExchangeRate(from: string, to: string) {
+    return this.http.get<any>(`${this.baseUrl}${from}`).pipe(
       map(({ rates }) => {
         const rate = 1 / rates[to];
-        return rate;
+        return +rate.toFixed(4);
       })
     );
   }

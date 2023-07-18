@@ -13,11 +13,11 @@ export class HeaderComponent implements OnInit {
   constructor(private currencyService: CurrencyService) {}
 
   async ngOnInit() {
-    this.currencyService.getExchangeRates('UAH', 'EUR').subscribe({
+    this.currencyService.getExchangeRate('UAH', 'EUR').subscribe({
       next: (rate) => (this.rateToEUR = rate),
     });
 
-    this.currencyService.getExchangeRates('UAH', 'USD').subscribe({
+    this.currencyService.getExchangeRate('UAH', 'USD').subscribe({
       next: (rate) => (this.rateToUSD = rate),
     });
   }
