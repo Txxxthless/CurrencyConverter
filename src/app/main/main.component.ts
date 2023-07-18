@@ -24,16 +24,15 @@ export class MainComponent {
 
   async onLeftChanged() {
     const value = this.leftForm.controls['value'].value;
-    const to = this.leftForm.controls['unit'].value;
-    const from = this.rightForm.controls['unit'].value;
+    const from = this.leftForm.controls['unit'].value;
+    const to = this.rightForm.controls['unit'].value;
 
-    console.log(value, from, to);
+    console.log(`Converting ${value} ${from} to ${to}`);
 
     if (from && to && value) {
       await this.currencyService.getExchangedValue(from, to, value).subscribe({
         next: (value) => {
           this.rightForm.controls['value'].setValue(value);
-          console.log(value);
         },
       });
     }
@@ -41,16 +40,15 @@ export class MainComponent {
 
   async onRightChanged() {
     const value = this.rightForm.controls['value'].value;
-    const to = this.rightForm.controls['unit'].value;
-    const from = this.leftForm.controls['unit'].value;
+    const from = this.rightForm.controls['unit'].value;
+    const to = this.leftForm.controls['unit'].value;
 
-    console.log(value, from, to);
+    console.log(`${value} from ${from} to ${to}`);
 
     if (from && to && value) {
       await this.currencyService.getExchangedValue(from, to, value).subscribe({
         next: (value) => {
           this.leftForm.controls['value'].setValue(value);
-          console.log(value);
         },
       });
     }

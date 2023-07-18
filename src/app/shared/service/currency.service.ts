@@ -13,7 +13,7 @@ export class CurrencyService {
   getExchangedValue(from: string, to: string, value: number) {
     return this.http.get<any>(`${this.baseUrl}${from}`).pipe(
       map(({ rates }) => {
-        const rate = 1 / rates[to];
+        const rate = rates[to];
         const result = value * rate;
         return +result.toFixed(2);
       })
