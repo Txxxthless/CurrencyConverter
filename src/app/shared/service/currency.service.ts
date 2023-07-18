@@ -10,11 +10,12 @@ export class CurrencyService {
 
   constructor(private http: HttpClient) {}
 
-  getExchangeRate(from: string, to: string) {
+  getExchangedValue(from: string, to: string, value: number) {
     return this.http.get<any>(`${this.baseUrl}${from}`).pipe(
       map(({ rates }) => {
         const rate = 1 / rates[to];
-        return +rate.toFixed(4);
+        const result = value * rate;
+        return +result.toFixed(2);
       })
     );
   }
