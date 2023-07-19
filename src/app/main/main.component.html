@@ -1,17 +1,19 @@
-<div class="container" style="margin-top: 150px">
-  <h1 style="margin-left: 35%; margin-right: 30%">Currency convernter</h1>
+<div class="main-panel shadow-lg">
   <div class="row" style="margin-top: 5%">
+    <h1 style="margin-left: 35%; margin-right: 30%; margin-bottom: 5%">
+      Currency convernter
+    </h1>
     <div class="col-6 d-flex justify-content-center">
       <form [formGroup]="leftForm">
         <input
           type="number"
-          class="form-control"
+          class="form-control shadow"
           placeholder="Value"
           [formControl]="leftForm.controls['value']"
           (change)="onLeftChanged()"
         />
         <select
-          class="form-select mt-4"
+          class="form-select shadow mt-4"
           [formControl]="leftForm.controls['unit']"
           (change)="onLeftChanged()"
         >
@@ -25,13 +27,13 @@
       <form [formGroup]="rightForm">
         <input
           type="number"
-          class="form-control"
+          class="form-control shadow"
           placeholder="Value"
           (change)="onRightChanged()"
           [formControl]="rightForm.controls['value']"
         />
         <select
-          class="form-select mt-4"
+          class="form-select shadow mt-4"
           [formControl]="rightForm.controls['unit']"
           (change)="onRightChanged()"
         >
