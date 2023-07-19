@@ -27,8 +27,6 @@ export class MainComponent {
     const from = this.leftForm.controls['unit'].value;
     const to = this.rightForm.controls['unit'].value;
 
-    console.log(`Converting ${value} ${from} to ${to}`);
-
     if (from && to && value) {
       await this.currencyService.getExchangedValue(from, to, value).subscribe({
         next: (value) => {
@@ -42,8 +40,6 @@ export class MainComponent {
     const value = this.rightForm.controls['value'].value;
     const from = this.rightForm.controls['unit'].value;
     const to = this.leftForm.controls['unit'].value;
-
-    console.log(`${value} from ${from} to ${to}`);
 
     if (from && to && value) {
       await this.currencyService.getExchangedValue(from, to, value).subscribe({
